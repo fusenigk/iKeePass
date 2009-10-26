@@ -70,6 +70,8 @@
 - (BOOL) isNetworkAvailable:(NSString* )databaseAtServerURL;
 -(void) openDatabase:(NSString* )pathToDatabase andDatabaseName:(NSString *)databaseName withPassword:(NSString*) passwordForDatabase;
 -(void) fetchDatabaseFromServer:(NSString* )databaseAtServerURL andDatabaseName:(NSString *)databaseName withUserName:(NSString*) userName andPassword:(NSString *) password;
+-(void)checkNetwork ;
+
 - (NSString *) fileInformationForSelectedFile:(NSInteger )selectedFileNum;
 - (NSString *) serverURLforSelectedFile: (NSInteger )selectedFileNum;
 - (void) reloadFilePicker;

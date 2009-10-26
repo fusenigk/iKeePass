@@ -243,8 +243,14 @@
 
 	if (indexPath.section == 0 && indexPath.row == 3)
 	{
+		// copy password to clipboard, with no time out !
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
 		NSString *webLink =  [child objectForKey:@"url"];
+
+		NSString *password =  [child objectForKey:@"password"];
+		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
+		
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:webLink]];
 	}
 }

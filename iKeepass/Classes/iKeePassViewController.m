@@ -30,6 +30,9 @@
 #import "RootViewController.h"
 #import <SystemConfiguration/SCNetworkReachability.h>
 
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <netinet/in.h>
+
 @interface UIProgressHUD : NSObject
 - (void) show: (BOOL) yesOrNo;
 - (UIProgressHUD *) initWithWindow: (UIView *) window;
@@ -227,11 +230,115 @@
 }
 */
 
+// http://www.iphonedevsdk.com/forum/iphone-sdk-development/27699-reachability-leaks.html
+-(void)checkNetwork
+{	
+	SCNetworkReachabilityRef reach = SCNetworkReachabilityCreateWithName(kCFAllocatorSystemDefault, "google.com"); 
+	SCNetworkConnectionFlags flags;
+	SCNetworkReachabilityGetFlags(reach, &flags); // Store reachability flags in the variable, flags.
+	
+	if(kSCNetworkReachabilityFlagsReachable & flags) {
+		NSLog(@" Can be reached using current connection.");
+		
+	}
+	
+	if(kSCNetworkReachabilityFlagsConnectionAutomatic & flags) {
+		NSLog(@" Can be reached using current connection, but a connection must be established.");
+		
+	}
+	
+	if(kSCNetworkReachabilityFlagsIsWWAN & flags) {
+		NSLog(@" Can be reached via the carrier network");
+		
+	} else {
+		NSLog(@" Cannot be reached using the carrier network");
+	}
+	
+	if((kSCNetworkReachabilityFlagsReachable & flags) && !(kSCNetworkReachabilityFlagsIsWWAN & flags)) {
+		NSLog(@" Cannot be reached using the carrier network, but it can be reached. (Therefore the device is using wifi)");
+	} else if (kSCNetworkReachabilityFlagsIsWWAN & flags) {
+		NSLog(@" Using the carrier network");
+		
+	} else {
+		NSLog(@" No connection available.");
+	}
+
+	// added //
+	CFRelease(reach); 
+}
+
 -(void) fetchDatabaseFromServer:(NSString* )databaseAtServerURL andDatabaseName:(NSString *)databaseName withUserName:(NSString*) userName andPassword:(NSString *) password {
 	// HUD einblenden mit Downloadhinweis
 	
 	[self performSelector:@selector(presentSheet)];
 	
+	// ----
+	// Part 1 - Create Internet socket addr of zero
+	struct sockaddr_in zeroAddr;
+	bzero(&zeroAddr, sizeof(zeroAddr));
+	zeroAddr.sin_len = sizeof(zeroAddr);
+	zeroAddr.sin_family = AF_INET;
+	
+	// Part 2- Create target in format need by SCNetwork
+	SCNetworkReachabilityRef target = 
+	SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *) &zeroAddr);
+	
+	// Part 3 - Get the flags
+	SCNetworkReachabilityFlags flags;
+	SCNetworkReachabilityGetFlags(target, &flags);
+	
+	// Part 4 - Create output
+	NSString *sNetworkReachable;
+	bool bNetWorkReachable = false ;
+	bool bCellWorkReachable = false ;
+	
+	if (flags & kSCNetworkFlagsReachable)
+	{
+		sNetworkReachable = @"YES";
+		bNetWorkReachable = true ;
+	}
+	else
+		sNetworkReachable = @"NO";
+	
+	NSString *sCellNetwork;
+	if (flags & kSCNetworkReachabilityFlagsIsWWAN)
+	{
+		sCellNetwork = @"YES";
+		bCellWorkReachable = true ;
+	}
+	else
+		sCellNetwork = @"NO";	
+			
+//	NSString *s = [[NSString alloc]
+//				   initWithFormat:
+//				   @"Network Reachable: %@\n"
+//				   @"Cell Network: %@\n",
+//				   sNetworkReachable,
+//				   sCellNetwork];
+	
+	[sCellNetwork release];
+	[sNetworkReachable release];
+
+	if (bNetWorkReachable == true || bCellWorkReachable == true)
+	{
+		// Network is fine //
+		// Wlan or Edge or 3G network //
+	}
+	else 
+	{
+		// kill wait cursor //
+		[self performSelector:@selector(killHUD:) withObject:HUD afterDelay:1.0];
+		
+		UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"iKeePass", @"") message:NSLocalizedString(@"ERROR_NONETWORK", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL_BUTTON", @"") otherButtonTitles:nil, nil];
+		[myAlertView show];
+		[myAlertView release];
+		return ;		
+	}
+	
+	
+	//	[s release];	
+	//
+/*
 	// Check, if a network is reachable start //
 	//BOOL bNetWorkAvailable = FALSE ;
 	SCNetworkReachabilityFlags flags;
@@ -252,7 +359,8 @@
 		return ;
 	}
 	// Check, if a network is reachable end //
-	
+*/
+		
 	 // synchronous download of the keepass database file.
 	 // todo: error handling, timeout and much more!
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[NSURL alloc ] initWithString:databaseAtServerURL]];
