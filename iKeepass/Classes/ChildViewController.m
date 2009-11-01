@@ -271,6 +271,7 @@
 		text = [child objectForKey:@"expire"]; 
 	} 
 	
+	
 	//NSString *text = [items objectAtIndex:[indexPath row]];
     // calculate the row height by calculating the text heigh
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
