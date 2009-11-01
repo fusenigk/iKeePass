@@ -520,6 +520,10 @@
 		dataBaseLoadedSuccessful = [reader parseXMLFileAtURL:pathToDatabase];
 		tree = reader.tree;
 	} else if ([pathToDatabase hasSuffix:@".kdb"]) {
+		HUD = [[UIProgressHUD alloc] initWithWindow:[self.view superview]];
+		[HUD setText:NSLocalizedString(@"DECRYPTING",@"Decrypting database. Please wait.")];
+		[HUD show:YES];		
+		
 		// Hier den KDB-Parser starten
 		//NSLog(@"Erzeuge KDBReader");
 		KDBReader *reader = [[[KDBReader alloc] init] retain];
@@ -528,6 +532,8 @@
 		//NSLog(@"Open Datenbank %@ mit Passwort: %@", databaseName, passwordForDatabase);
 		tree = reader.tree;
 		
+		// kill wait cursor //
+		[self performSelector:@selector(killHUD:) withObject:HUD afterDelay:1.0];		
 	} else {
 		// Falsches Format, return
 		return;

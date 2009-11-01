@@ -287,8 +287,31 @@
 
 	//printf("Selected: %d:%d", indexPath.row, indexPath.section) ;
 
+	if (indexPath.section == 0 && indexPath.row == 1)
+	{
+		// click on username field
+		// copy username to clipboard, with no time out !
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
+		
+		NSString *username =  [child objectForKey:@"username"];
+		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
+	}
+	else
+	if (indexPath.section == 0 && indexPath.row == 2)
+	{
+		// click on password field
+		// copy password to clipboard, with no time out !
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
+			
+		NSString *username =  [child objectForKey:@"password"];
+		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
+	}
+	else
 	if (indexPath.section == 0 && indexPath.row == 3)
 	{
+		// click on URL field
 		// copy password to clipboard, with no time out !
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
 		NSString *webLink =  [child objectForKey:@"url"];
