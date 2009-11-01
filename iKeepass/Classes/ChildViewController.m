@@ -275,11 +275,8 @@
 	//NSString *text = [items objectAtIndex:[indexPath row]];
     // calculate the row height by calculating the text heigh
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    
     CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
     CGFloat height = MAX(size.height, 40.0f);
-    
     return height + (CELL_CONTENT_MARGIN * 0.9);
 }
 
@@ -291,20 +288,20 @@
 	{
 		// click on username field
 		// copy username to clipboard, with no time out !
+		NSString *username = @"" ;
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
-		
-		NSString *username =  [child objectForKey:@"username"];
+		username =  [child objectForKey:@"username"];
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
+		[pasteboard setValue: username forPasteboardType: @"public.utf8-plain-text"];		
 	}
 	else
 	if (indexPath.section == 0 && indexPath.row == 2)
 	{
 		// click on password field
 		// copy password to clipboard, with no time out !
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
-			
-		NSString *username =  [child objectForKey:@"password"];
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 			
+		NSString *password = @"" ;
+		password =  [child objectForKey:@"password"];
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
 	}
@@ -316,11 +313,24 @@
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
 		NSString *webLink =  [child objectForKey:@"url"];
 
-		NSString *password =  [child objectForKey:@"password"];
+		NSString *password = @"" ;
+		password =  [child objectForKey:@"password"];
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
 		
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:webLink]];
+	}
+	else
+	if (indexPath.section == 0 && indexPath.row == 4)
+	{
+		// click on comment field
+		// copy password to clipboard, with no time out !
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FIRST_CELL_IDENTIFIER]; 
+			
+		NSString *comment = @"" ;
+		comment =  [child objectForKey:@"comment"];
+		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+		[pasteboard setValue: comment forPasteboardType: @"public.utf8-plain-text"];		
 	}
 }
 

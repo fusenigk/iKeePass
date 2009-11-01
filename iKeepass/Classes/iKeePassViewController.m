@@ -544,30 +544,19 @@
 		RootViewController *rootController = [[[RootViewController alloc] initWithNibName:nil bundle:nil] retain];
 		rootController.databaseName = databaseName;
 		
-		
 		//[navigationController pushViewController:rootController animated:YES];
 		NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
 		// Damit kommt der View wieder zurück!!
 		//[viewControllers addObject:self];
 		
 		[viewControllers addObject:rootController];
-		
-	
 		[navigationController setViewControllers:viewControllers];
-		
 		[[self window] addSubview:[navigationController view]];
 	
 		//[navigationController pushViewController:rootController animated:YES];
 		
-		
 		[[navigationController visibleViewController] setTree:tree];
-	
 		[[navigationController visibleViewController] setNavigationController:navigationController];
-		
-		
-		
-		
-		
 		
 		
 		
