@@ -39,3 +39,4 @@
 "PLEASE_ENTER_DB_NAME_MESSAGE" = "\n\nBitte gebe Sie den Datenbanknamen ein:";
 "ABOUT_MESSAGE" = "iKeePass\nVersion 1.0/2008\n\n(c) Karsten Fusenig (fusenigk.de GmbH) und Markus Schlecht\nbasiert auf KeePass von Dominik Reichl\n\nhttp://www.ikeepass.de";
 "ERROR_NONETWORK" = "Abbruch: Kein Netzwerk verfügbar.";
+"DECRYPTING" = "Entschlüssele Datenbank. Bitte warten.";

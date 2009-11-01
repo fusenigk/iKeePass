@@ -139,6 +139,30 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row != 4)
+	{
+		return 44 ;
+	}
+	else {
+		
+		NSString *search = @"Test";
+		//NSString *text = [child objectForKey:@"comment"]; 
+		
+		//NSMutableDictionary *entry = [child objectForKey:@"comment"]; 
+		
+		// count Number of lines //
+		//NSUInteger  cnt = [[text componentsSeparatedByString: search] count];
+				
+		NSLog(@"Comment: %@" ,[child objectForKey:@"comment"]);
+		
+		return 44 + (14*4) ;
+	}
+	
+//	return 40 ;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     /*static NSString *CellIdentifier = @"Cell";
@@ -166,8 +190,19 @@
 										   reuseIdentifier:FIRST_CELL_IDENTIFIER] 
 					autorelease]; 
 			cell.selectionStyle = UITableViewCellSelectionStyleNone; 
-			label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 12.0, 95.0, 
+
+			//if (indexPath.row != 4)
+			//{
+				label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 12.0, 95.0, 
 															   25.0)] autorelease]; 
+/*			}
+			else
+			{
+				label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 12.0, 95.0, 
+																   25.0*5)] autorelease]; 
+				
+			}
+*/			
 			label.tag = LABEL_TAG; 
 			label.font = [UIFont systemFontOfSize:12.0]; 
 			label.textAlignment = UITextAlignmentRight; 
@@ -175,14 +210,38 @@
 			label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | 
 			UIViewAutoresizingFlexibleHeight; 
 			[cell.contentView addSubview:label]; 
-			value = [[[UILabel alloc] initWithFrame:CGRectMake(100.0, 12.0, 220.0, 
-															   25.0)] autorelease]; 
+			
+			if (indexPath.row != 4)
+			{
+				value = [[[UILabel alloc] initWithFrame:CGRectMake(100.0, 12.0, 200, 			
+						 25.0)] autorelease]; 
+			}
+			else {
+				//value.numberOfLines = 5 ;			
+				value = [[[UILabel alloc] initWithFrame:CGRectMake(100.0, 12.0, 200, 			
+																   25.0*5)] autorelease]; 
+			}
+
+			
+			//value = [[[UILabel alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 280.0f, 330.0f)] autorelease]; 
+						
 			value.tag = VALUE_TAG; 
 			value.font = [UIFont systemFontOfSize:12.0]; 
 			value.textColor = [UIColor blackColor]; 
 			value.lineBreakMode = UILineBreakModeWordWrap; 
-			value.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
-			UIViewAutoresizingFlexibleHeight;
+			//value.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
+			//UIViewAutoresizingFlexibleHeight;
+			
+			//value.numberOfLines = 5 ;
+			//[value sizeToFit ];
+
+			/*if (indexPath.row == 4)
+			{
+				value.numberOfLines = 5 ;
+				[value sizeToFit ];				
+			}
+			*/
+			
 			if (indexPath.row != 5 )
 				[cell.contentView addSubview:value]; 
 		} else { 
@@ -204,8 +263,39 @@
 			value.text = [child objectForKey:@"url"]; 
 			value.textColor = [UIColor blueColor];
 		} else if (indexPath.row == 4 ) { 
+			//UILabel *value = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 60)];
+
 			label.text = NSLocalizedString(@"COMMENT", @""); 
+			
+			value.numberOfLines = 5 ;			
 			value.text = [child objectForKey:@"comment"]; 
+	
+			//NSLog(@"Comment: %@" , value.text);
+			//CGSize size = [cell getSizeOfText:value.text withFont:value.font];
+/*
+			NSString *stHelper = [child objectForKey:@"comment"]; 
+			CGSize size = [stHelper sizeWithFont:[UIFont systemFontOfSize:17.0
+									  constrainedToSize:CGSizeMake(220.f, 50.0f)]];
+*/
+			
+			//value.CGRectMake(100.0, 12.0, 220.0, 25.0) ;
+			
+			
+			[value sizeToFit ];				
+
+			
+			// see http://www.doubleencore.com/blog/2009/01/18/iphone-dev-tip-using-uilabels-numberoflines-adjustsfontsizetowidth/
+			//value.numberOfLines = 5 ;
+
+			// adjustsFontSizeToFitWidth only works if numberOfLines is set to 1
+			//value.numberOfLines = 5;
+			//value.adjustsFontSizeToFitWidth = YES ;
+			//value.adjustsFontSizetoWidth = YES;
+			//value.minimumFontSize = 8.0f;
+			
+			// auto size height 
+//			value.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
+//									 UIViewAutoresizingFlexibleHeight;
 		} else if (indexPath.row == 5 ) { 
 			label.text = NSLocalizedString(@"ICON", @""); 
 			

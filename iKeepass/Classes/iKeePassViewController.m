@@ -522,11 +522,21 @@
 	} else if ([pathToDatabase hasSuffix:@".kdb"]) {
 		// Hier den KDB-Parser starten
 		//NSLog(@"Erzeuge KDBReader");
+
+		// kf oktober
+		HUD = [[UIProgressHUD alloc] initWithWindow:[self.view superview]];
+		[HUD setText:NSLocalizedString(@"DECRYPTING",@"Decrypting database. Please wait.")];
+		[HUD show:YES];
+		
+		
 		KDBReader *reader = [[[KDBReader alloc] init] retain];
 		dataBaseLoadedSuccessful = [reader parseKDBFileAtURL:pathToDatabase withPassword:passwordForDatabase];
 		//tree = reader.parseKDBFileAtURL(databaseName, passwordForDatabase);
 		//NSLog(@"Open Datenbank %@ mit Passwort: %@", databaseName, passwordForDatabase);
 		tree = reader.tree;
+
+		// kill wait cursor //
+		//[self performSelector:@selector(killHUD:) withObject:HUD afterDelay:1.0];
 		
 	} else {
 		// Falsches Format, return
