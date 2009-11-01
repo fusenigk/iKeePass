@@ -76,6 +76,12 @@
 		UIImageView *imageView = (UIImageView *)[cell viewWithTag:IMAGE_TAG];
 		NSString *image = [value objectForKey:@"icon"];
 		imageView.image = [[UIImage imageNamed:[ image stringByAppendingString:@".png"] ] retain];
+		
+		//NSDictionary* value = [tree objectAtIndex:indexPath.row];
+		//if ([[value objectForKey:@"group"] boolValue]) {
+		if ([[value objectForKey:@"children"] count] > 0)
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		//} 
 	    
 	
 	} else {
@@ -91,8 +97,11 @@
 		// Get the time zone wrapper for the row
 		UIImageView *imageView = (UIImageView *)[cell viewWithTag:IMAGE_TAG];
 		NSString *image = [value objectForKey:@"icon"];
-		imageView.image = [[UIImage imageNamed:[image stringByAppendingString:@".png"] ] retain];  
+		imageView.image = [[UIImage imageNamed:[image stringByAppendingString:@".png"] ] retain]; 
+		
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
+	
 	
     return cell;
 }
@@ -221,6 +230,8 @@
 	} 
 }
  */
+
+
 
 
 - (void)viewDidLoad {

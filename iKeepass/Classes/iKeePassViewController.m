@@ -522,21 +522,11 @@
 	} else if ([pathToDatabase hasSuffix:@".kdb"]) {
 		// Hier den KDB-Parser starten
 		//NSLog(@"Erzeuge KDBReader");
-
-		// kf oktober
-		HUD = [[UIProgressHUD alloc] initWithWindow:[self.view superview]];
-		[HUD setText:NSLocalizedString(@"DECRYPTING",@"Decrypting database. Please wait.")];
-		[HUD show:YES];
-		
-		
 		KDBReader *reader = [[[KDBReader alloc] init] retain];
 		dataBaseLoadedSuccessful = [reader parseKDBFileAtURL:pathToDatabase withPassword:passwordForDatabase];
 		//tree = reader.parseKDBFileAtURL(databaseName, passwordForDatabase);
 		//NSLog(@"Open Datenbank %@ mit Passwort: %@", databaseName, passwordForDatabase);
 		tree = reader.tree;
-
-		// kill wait cursor //
-		//[self performSelector:@selector(killHUD:) withObject:HUD afterDelay:1.0];
 		
 	} else {
 		// Falsches Format, return
@@ -547,21 +537,51 @@
 		// Datenbank wurde gelesen
 		RootViewController *rootController = [[[RootViewController alloc] initWithNibName:nil bundle:nil] retain];
 		rootController.databaseName = databaseName;
+		
+		
 		//[navigationController pushViewController:rootController animated:YES];
 		NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+		// Damit kommt der View wieder zurück!!
+		//[viewControllers addObject:self];
+		
 		[viewControllers addObject:rootController];
+		
 	
 		[navigationController setViewControllers:viewControllers];
 		
 		[[self window] addSubview:[navigationController view]];
 	
+		//[navigationController pushViewController:rootController animated:YES];
+		
+		
 		[[navigationController visibleViewController] setTree:tree];
 	
 		[[navigationController visibleViewController] setNavigationController:navigationController];
+		
+		
+		
+		
+		
+		
+		
+		
+		UIBarButtonItem *closeButton = [[UIBarButtonItem alloc]
+										initWithTitle:NSLocalizedString(@"CloseButtonTitle", @"") 
+										style:UIBarButtonItemStyleBordered 
+										target:self action:@selector(close)];
+		[[navigationController visibleViewController] navigationItem].leftBarButtonItem = closeButton;
+		
+		[closeButton release];
+		
 		//NSLog(@"Number of Viewontrollers in navigationController: %i", navigationController.viewControllers);
 	} else { // Datenbank kpnnte nicht gelesen werden!
 		//NSLog(@"Fehler beim öffnen der Datenbank");
 	}
+}
+
+-(void) close {
+	[[self window] addSubview:[self view]];
+	//[viewControllers pushViewController:<#(UIViewController *)viewController#> animated:<#(BOOL)animated#>
 }
 
 

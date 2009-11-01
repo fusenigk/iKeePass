@@ -37,7 +37,9 @@
 #define VALUE_TAG 2 
 #define FIRST_CELL_IDENTIFIER @"TrailItemCell" 
 #define SECOND_CELL_IDENTIFIER @"RegularCell" 
-
+#define FONT_SIZE 14.0f
+#define CELL_CONTENT_WIDTH 320.0f
+#define CELL_CONTENT_MARGIN 10.0f
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -139,30 +141,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if (indexPath.row != 4)
-	{
-		return 44 ;
-	}
-	else {
-		
-		NSString *search = @"Test";
-		//NSString *text = [child objectForKey:@"comment"]; 
-		
-		//NSMutableDictionary *entry = [child objectForKey:@"comment"]; 
-		
-		// count Number of lines //
-		//NSUInteger  cnt = [[text componentsSeparatedByString: search] count];
-				
-		NSLog(@"Comment: %@" ,[child objectForKey:@"comment"]);
-		
-		return 44 + (14*4) ;
-	}
-	
-//	return 40 ;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     /*static NSString *CellIdentifier = @"Cell";
@@ -190,19 +168,8 @@
 										   reuseIdentifier:FIRST_CELL_IDENTIFIER] 
 					autorelease]; 
 			cell.selectionStyle = UITableViewCellSelectionStyleNone; 
-
-			//if (indexPath.row != 4)
-			//{
-				label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 12.0, 95.0, 
+			label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 12.0, 95.0, 
 															   25.0)] autorelease]; 
-/*			}
-			else
-			{
-				label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0, 12.0, 95.0, 
-																   25.0*5)] autorelease]; 
-				
-			}
-*/			
 			label.tag = LABEL_TAG; 
 			label.font = [UIFont systemFontOfSize:12.0]; 
 			label.textAlignment = UITextAlignmentRight; 
@@ -210,38 +177,14 @@
 			label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | 
 			UIViewAutoresizingFlexibleHeight; 
 			[cell.contentView addSubview:label]; 
-			
-			if (indexPath.row != 4)
-			{
-				value = [[[UILabel alloc] initWithFrame:CGRectMake(100.0, 12.0, 200, 			
-						 25.0)] autorelease]; 
-			}
-			else {
-				//value.numberOfLines = 5 ;			
-				value = [[[UILabel alloc] initWithFrame:CGRectMake(100.0, 12.0, 200, 			
-																   25.0*5)] autorelease]; 
-			}
-
-			
-			//value = [[[UILabel alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 280.0f, 330.0f)] autorelease]; 
-						
+			value = [[[UILabel alloc] initWithFrame:CGRectMake(100.0, 12.0, 220.0, 
+															   25.0)] autorelease]; 
 			value.tag = VALUE_TAG; 
 			value.font = [UIFont systemFontOfSize:12.0]; 
 			value.textColor = [UIColor blackColor]; 
 			value.lineBreakMode = UILineBreakModeWordWrap; 
-			//value.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
-			//UIViewAutoresizingFlexibleHeight;
-			
-			//value.numberOfLines = 5 ;
-			//[value sizeToFit ];
-
-			/*if (indexPath.row == 4)
-			{
-				value.numberOfLines = 5 ;
-				[value sizeToFit ];				
-			}
-			*/
-			
+			value.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
+			UIViewAutoresizingFlexibleHeight;
 			if (indexPath.row != 5 )
 				[cell.contentView addSubview:value]; 
 		} else { 
@@ -263,39 +206,10 @@
 			value.text = [child objectForKey:@"url"]; 
 			value.textColor = [UIColor blueColor];
 		} else if (indexPath.row == 4 ) { 
-			//UILabel *value = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 60)];
-
 			label.text = NSLocalizedString(@"COMMENT", @""); 
-			
-			value.numberOfLines = 5 ;			
 			value.text = [child objectForKey:@"comment"]; 
-	
-			//NSLog(@"Comment: %@" , value.text);
-			//CGSize size = [cell getSizeOfText:value.text withFont:value.font];
-/*
-			NSString *stHelper = [child objectForKey:@"comment"]; 
-			CGSize size = [stHelper sizeWithFont:[UIFont systemFontOfSize:17.0
-									  constrainedToSize:CGSizeMake(220.f, 50.0f)]];
-*/
 			
-			//value.CGRectMake(100.0, 12.0, 220.0, 25.0) ;
-			
-			
-			[value sizeToFit ];				
-
-			
-			// see http://www.doubleencore.com/blog/2009/01/18/iphone-dev-tip-using-uilabels-numberoflines-adjustsfontsizetowidth/
-			//value.numberOfLines = 5 ;
-
-			// adjustsFontSizeToFitWidth only works if numberOfLines is set to 1
-			//value.numberOfLines = 5;
-			//value.adjustsFontSizeToFitWidth = YES ;
-			//value.adjustsFontSizetoWidth = YES;
-			//value.minimumFontSize = 8.0f;
-			
-			// auto size height 
-//			value.autoresizingMask = UIViewAutoresizingFlexibleWidth | 
-//									 UIViewAutoresizingFlexibleHeight;
+			//NSLog(@"Comment: %@", value.text);
 		} else if (indexPath.row == 5 ) { 
 			label.text = NSLocalizedString(@"ICON", @""); 
 			
@@ -321,10 +235,51 @@
 			label.text =NSLocalizedString(@"EXPIRE", @""); 
 			value.text = [child objectForKey:@"expire"]; 
 		} 
+		// mehrere Zeilen zulassen
+		value.lineBreakMode = UILineBreakModeWordWrap;
+		value.numberOfLines = 0;
 		return cell; 
 	
 	}// etc. 
 	
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    NSString *text = @"";
+	
+	if (indexPath.row == 0) { 
+		text = [child objectForKey:@"title"]; 
+	} else if (indexPath.row == 1 ) { 
+		text = [child objectForKey:@"username"];
+	} else if (indexPath.row == 2 ) { 
+		text = [self redisplayPassword:[child objectForKey:@"password"]];; 
+	} else if (indexPath.row == 3 ) { 
+		text = [child objectForKey:@"url"]; 
+	} else if (indexPath.row == 4 ) { 
+		text = [child objectForKey:@"comment"]; 
+	} else if (indexPath.row == 5 ) { 
+		text = NSLocalizedString(@"ICON", @""); 
+		
+	} else if (indexPath.row == 6 ) { 
+		text = [child objectForKey:@"creation"]; 
+	} else if (indexPath.row == 7 ) { 
+		text = [child objectForKey:@"lastaccess"]; 
+	} else if (indexPath.row == 8 ) { 
+		text = [child objectForKey:@"lastmod"]; 
+	} else { // TRAIL_RESTRICT_ROW 
+		text = [child objectForKey:@"expire"]; 
+	} 
+	
+	//NSString *text = [items objectAtIndex:[indexPath row]];
+    // calculate the row height by calculating the text heigh
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 40.0f);
+    
+    return height + (CELL_CONTENT_MARGIN * 0.9);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
