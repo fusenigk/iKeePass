@@ -257,10 +257,13 @@ UIColor *sysBlueColor(float percent) {
 	// [alertView setTitle:@"Your Custom Title Here"];
 	//[alertView setMessage:@"Your Custom Message Here"];
 	
+	
+	[self.alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
+
 	//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
 	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
 	
-//	// Höhe der Meldung //
+	// Höhe der Meldung //
 	[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
 	[myTableView addSubview:alertView];
 	[self.alertView release];	
@@ -269,20 +272,21 @@ UIColor *sysBlueColor(float percent) {
 - (void)loadView
 {
     [super loadView];
-	
+
+/*	
 	// Create the alert view
 	// Optional extras:
 	// [alertView setTitle:@"Your Custom Title Here"];
-	//[alertView setMessage:@"Your Custom Message Here"];
+//	[alertView setMessage:@"Your Custom Message Here"];
+	[alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
 	
-	//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
-//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
-	
-//	// Höhe der Meldung //
-//	[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
-//	[contentView addSubview:alertView];
-//	[self.alertView release];
-	
+	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+
+	// Höhe der Meldung //
+	[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
+	[self addSubview:alertView];
+	[self.alertView release];
+*/	
 	
 }
 
@@ -474,8 +478,13 @@ UIColor *sysBlueColor(float percent) {
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: username forPasteboardType: @"public.utf8-plain-text"];		
 		
-		[alertView setMessage:@"Passwort in Zwischenablage kopiert."];
-		if (self.alertView) [self.alertView presentView];
+		[alertView setMessage:NSLocalizedString(@"MSG_USERNAMETOCLIPBOARD", @"")];
+		self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+		// Höhe der Meldung //
+		[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
+		[myTableView addSubview:alertView];
+		[self.alertView release];			
+		[self.alertView presentView];
 	}
 	else
 	if (indexPath.section == 0 && indexPath.row == 2)
@@ -487,6 +496,14 @@ UIColor *sysBlueColor(float percent) {
 		password =  [child objectForKey:@"password"];
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
+
+		[alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
+		self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+		// Höhe der Meldung //
+		[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
+		[myTableView addSubview:alertView];
+		[self.alertView release];			
+		[self.alertView presentView];
 	}
 	else
 	if (indexPath.section == 0 && indexPath.row == 3)
@@ -500,6 +517,14 @@ UIColor *sysBlueColor(float percent) {
 		password =  [child objectForKey:@"password"];
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
+
+		[alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
+		self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+		// Höhe der Meldung //
+		[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
+		[myTableView addSubview:alertView];
+		[self.alertView release];			
+		[self.alertView presentView];
 		
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:webLink]];
 	}
