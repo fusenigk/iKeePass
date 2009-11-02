@@ -70,36 +70,9 @@ UIColor *sysBlueColor(float percent) {
 	
 	[self setAlpha:0.9];
 	[self setBackgroundColor: sysBlueColor(0.4f)];
-	
-	/*
-	 // Add button
-	 UIButton *button = [[UIButton buttonWithType:UIButtonTypeCustom] initWithFrame:CGRectMake(220.0f, 200.0f, 80.0f, 32.0f)];
-	 [button setBackgroundImage:[UIImage imageNamed:@"whiteButton.png"] forState:UIControlStateNormal];
-	 [button setTitle:@"Okay" forState: UIControlStateHighlighted];
-	 [button setTitle:@"Okay" forState: UIControlStateNormal];	
-	 [button setFont:[UIFont boldSystemFontOfSize:14.0f]];
-	 [button addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];
-	 [self addSubview:button];
-	 */
-	
-	/*
-	 // Add title
-	 UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 8.0f, 320.0f, 32.0f)];
-	 title.text = @"Declaration of Independence";
-	 title.textAlignment = UITextAlignmentCenter;
-	 title.textColor = [UIColor whiteColor];
-	 title.backgroundColor = [UIColor clearColor];
-	 title.font = [UIFont boldSystemFontOfSize:20.0f];
-	 [self addSubview:title];
-	 [title release];
-	 */
-	
+		
 	// Add message
 	UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(2.0f, 1.0f, 280.0f, 30.0f)];
-	//	UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 280.0f, 200.0f - 48.0f)];
-	
-	//message.text = @"When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another, and to assume among the powers of the earth, the separate and equal station to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.";
-	//message.text = @"Passwort in Zwischenablage kopiert.";
 	message.text = messageText ;
 	
 	message.textAlignment = UITextAlignmentCenter;
@@ -110,23 +83,6 @@ UIColor *sysBlueColor(float percent) {
 	message.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
 	[self addSubview:message];
 	[message release];	
-	
-	/*
-	 // kf start begin
-	 // Scroll away the overlay
-	 CGContextRef context = UIGraphicsGetCurrentContext();
-	 [UIView beginAnimations:nil context:context];
-	 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	 [UIView setAnimationDuration:0.5];
-	 
-	 CGRect rect2 = [self frame];
-	 rect2.origin.y = -10.0f - rect2.size.height;
-	 [self setFrame:rect2];
-	 
-	 // Complete the animation
-	 [UIView commitAnimations];
-	 // kf start end
-	 */
 	
 	return self;
 }
@@ -253,14 +209,8 @@ UIColor *sysBlueColor(float percent) {
 	[toolbar release];	
 	
 	// Create the alert view
-	// Optional extras:
-	// [alertView setTitle:@"Your Custom Title Here"];
 	//[alertView setMessage:@"Your Custom Message Here"];
-	
-	
 	[self.alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
-
-	//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
 	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
 	
 	// Höhe der Meldung //
@@ -272,22 +222,6 @@ UIColor *sysBlueColor(float percent) {
 - (void)loadView
 {
     [super loadView];
-
-/*	
-	// Create the alert view
-	// Optional extras:
-	// [alertView setTitle:@"Your Custom Title Here"];
-//	[alertView setMessage:@"Your Custom Message Here"];
-	[alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
-	
-	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
-
-	// Höhe der Meldung //
-	[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
-	[self addSubview:alertView];
-	[self.alertView release];
-*/	
-	
 }
 
 
@@ -328,21 +262,6 @@ UIColor *sysBlueColor(float percent) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    /*static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    // Configure the cell
-    return cell;*/
-	
-	/*BayAreaTrailsAppDelegate *delegate = [[UIApplication sharedApplication] 
-										  delegate]; */
-	/*NSArray *trails = [[[delegate bayAreaTrails] 
-						objectAtIndex:delegate.currentRegion.row] 
-					   objectForKey:@"Trails"]; */
-	//NSDictionary *curTrail = [trails objectAtIndex:delegate.currentTrail.row]; 
 	if (indexPath.section==0) { 
 		UILabel *label, *value; 
 		UITableViewCell *cell = [tableView 
@@ -456,7 +375,6 @@ UIColor *sysBlueColor(float percent) {
 		text = [child objectForKey:@"expire"]; 
 	} 
 	
-	//NSString *text = [items objectAtIndex:[indexPath row]];
     // calculate the row height by calculating the text heigh
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
@@ -465,8 +383,6 @@ UIColor *sysBlueColor(float percent) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-	//printf("Selected: %d:%d", indexPath.row, indexPath.section) ;
 
 	if (indexPath.section == 0 && indexPath.row == 1)
 	{
@@ -478,6 +394,7 @@ UIColor *sysBlueColor(float percent) {
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: username forPasteboardType: @"public.utf8-plain-text"];		
 		
+		// Create the alert view
 		[alertView setMessage:NSLocalizedString(@"MSG_USERNAMETOCLIPBOARD", @"")];
 		self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
 		// Höhe der Meldung //
@@ -497,6 +414,7 @@ UIColor *sysBlueColor(float percent) {
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
 
+		// Create the alert view
 		[alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
 		self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
 		// Höhe der Meldung //
@@ -518,6 +436,7 @@ UIColor *sysBlueColor(float percent) {
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: password forPasteboardType: @"public.utf8-plain-text"];		
 
+		// Create the alert view
 		[alertView setMessage:NSLocalizedString(@"MSG_PASSWORDTOCLIPBOARD", @"")];
 		self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
 		// Höhe der Meldung //
@@ -542,62 +461,9 @@ UIColor *sysBlueColor(float percent) {
 	}
 }
 
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-    }
-    if (editingStyle == UITableViewCellEditingStyleInsert) {
-    }
-}
-*/
-
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-}
-*/
-/*
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-*/
-
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end
 
