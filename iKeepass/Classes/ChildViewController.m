@@ -28,10 +28,7 @@
 #import "ChildViewController.h"
 
 
-@implementation ChildViewController
-
-@synthesize navigationController;
-@synthesize child;
+@implementation TopAlert
 
 #define LABEL_TAG 1 
 #define VALUE_TAG 2 
@@ -41,6 +38,157 @@
 #define CELL_CONTENT_WIDTH 320.0f
 #define CELL_CONTENT_MARGIN 10.0f
 
+#define	TITLE_TAG	999
+#define	MESSAGE_TAG	998
+
+UIColor *sysBlueColor(float percent) {
+	float red = percent * 255.0f;
+	float green = (red + 20.0f) / 255.0f;
+	float blue = (red + 45.0f) / 255.0f;
+	if (green > 1.0) green = 1.0f;
+	if (blue > 1.0f) blue = 1.0f;
+	
+	return [UIColor colorWithRed:percent green:green blue:blue alpha:1.0f];
+}
+
+- (void) setTitle: (NSString *)titleText
+{
+	[(UILabel *)[self viewWithTag:TITLE_TAG] setText:titleText];
+}
+
+- (void) setMessage: (NSString *)messageTextHelper
+{
+	messageText = @"" ;
+	messageText = messageTextHelper ;
+	[(UILabel *)[self viewWithTag:MESSAGE_TAG] setText:messageText];
+}
+
+- (TopAlert *) initWithFrame: (CGRect) rect
+{
+	rect.origin.y = 20.0f - rect.size.height; // Place above status bar
+	self = [super initWithFrame:rect];
+	
+	[self setAlpha:0.9];
+	[self setBackgroundColor: sysBlueColor(0.4f)];
+	
+	/*
+	 // Add button
+	 UIButton *button = [[UIButton buttonWithType:UIButtonTypeCustom] initWithFrame:CGRectMake(220.0f, 200.0f, 80.0f, 32.0f)];
+	 [button setBackgroundImage:[UIImage imageNamed:@"whiteButton.png"] forState:UIControlStateNormal];
+	 [button setTitle:@"Okay" forState: UIControlStateHighlighted];
+	 [button setTitle:@"Okay" forState: UIControlStateNormal];	
+	 [button setFont:[UIFont boldSystemFontOfSize:14.0f]];
+	 [button addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];
+	 [self addSubview:button];
+	 */
+	
+	/*
+	 // Add title
+	 UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 8.0f, 320.0f, 32.0f)];
+	 title.text = @"Declaration of Independence";
+	 title.textAlignment = UITextAlignmentCenter;
+	 title.textColor = [UIColor whiteColor];
+	 title.backgroundColor = [UIColor clearColor];
+	 title.font = [UIFont boldSystemFontOfSize:20.0f];
+	 [self addSubview:title];
+	 [title release];
+	 */
+	
+	// Add message
+	UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(2.0f, 1.0f, 280.0f, 30.0f)];
+	//	UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 280.0f, 200.0f - 48.0f)];
+	
+	//message.text = @"When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another, and to assume among the powers of the earth, the separate and equal station to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.";
+	//message.text = @"Passwort in Zwischenablage kopiert.";
+	message.text = messageText ;
+	
+	message.textAlignment = UITextAlignmentCenter;
+	message.numberOfLines = 999;
+	message.textColor = [UIColor whiteColor];
+	message.backgroundColor = [UIColor clearColor];
+	message.lineBreakMode = UILineBreakModeWordWrap;
+	message.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
+	[self addSubview:message];
+	[message release];	
+	
+	/*
+	 // kf start begin
+	 // Scroll away the overlay
+	 CGContextRef context = UIGraphicsGetCurrentContext();
+	 [UIView beginAnimations:nil context:context];
+	 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	 [UIView setAnimationDuration:0.5];
+	 
+	 CGRect rect2 = [self frame];
+	 rect2.origin.y = -10.0f - rect2.size.height;
+	 [self setFrame:rect2];
+	 
+	 // Complete the animation
+	 [UIView commitAnimations];
+	 // kf start end
+	 */
+	
+	return self;
+}
+
+- (void) removeView
+{
+	// Scroll away the overlay
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	[UIView beginAnimations:nil context:context];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:0.5];
+	
+	CGRect rect = [self frame];
+	rect.origin.y = -10.0f - rect.size.height;
+	[self setFrame:rect];
+	
+	// Complete the animation
+	[UIView commitAnimations];
+}
+
+- (void) presentView
+{
+	// Scroll in the overlay
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	[UIView beginAnimations:nil context:context];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:0.5];
+	
+	CGRect rect = [self frame];
+	rect.origin.y = 0.0f;
+	[self setFrame:rect];
+	
+	// Complete the animation
+	[UIView commitAnimations];
+	
+	// kf start begin
+	// wait //
+	//[NSThread sleepForTimeInterval:2.0] ;
+	// Scroll away the overlay
+	//CGContextRef context = UIGraphicsGetCurrentContext();
+	[UIView beginAnimations:nil context:context];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:1.5];
+	
+	CGRect rect2 = [self frame];
+	rect2.origin.y = -10.0f - rect2.size.height;
+	[self setFrame:rect2];
+	
+	// Complete the animation
+	[UIView commitAnimations];
+	// kf start end
+	
+}
+@end
+// ---- End of Alert implemenation ---
+
+
+@implementation ChildViewController
+
+@synthesize navigationController;
+@synthesize child;
+@synthesize alertView;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -104,7 +252,40 @@
 	[self.view addSubview:toolbar];
 	[toolbar release];	
 	
+	// Create the alert view
+	// Optional extras:
+	// [alertView setTitle:@"Your Custom Title Here"];
+	//[alertView setMessage:@"Your Custom Message Here"];
+	
+	//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
+	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+	
+//	// Höhe der Meldung //
+	[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
+	[myTableView addSubview:alertView];
+	[self.alertView release];	
 }
+
+- (void)loadView
+{
+    [super loadView];
+	
+	// Create the alert view
+	// Optional extras:
+	// [alertView setTitle:@"Your Custom Title Here"];
+	//[alertView setMessage:@"Your Custom Message Here"];
+	
+	//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
+//	self.alertView = [[TopAlert alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+	
+//	// Höhe der Meldung //
+//	[self.alertView setCenter:CGPointMake(160.0f, -140.0f)];
+//	[contentView addSubview:alertView];
+//	[self.alertView release];
+	
+	
+}
+
 
 - (void)leftViewAction:(id)sender
 {
@@ -271,7 +452,6 @@
 		text = [child objectForKey:@"expire"]; 
 	} 
 	
-	
 	//NSString *text = [items objectAtIndex:[indexPath row]];
     // calculate the row height by calculating the text heigh
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
@@ -293,6 +473,9 @@
 		username =  [child objectForKey:@"username"];
 		UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 		[pasteboard setValue: username forPasteboardType: @"public.utf8-plain-text"];		
+		
+		[alertView setMessage:@"Passwort in Zwischenablage kopiert."];
+		if (self.alertView) [self.alertView presentView];
 	}
 	else
 	if (indexPath.section == 0 && indexPath.row == 2)

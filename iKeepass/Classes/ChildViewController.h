@@ -26,6 +26,13 @@
 */
 #import <UIKit/UIKit.h>
 
+@interface TopAlert : UIView
+
+	NSString *messageText  ;
+	- (void) setTitle: (NSString *)titleText;
+	- (void) setMessage: (NSString *)messageText;
+@end
+
 
 @interface ChildViewController : UIViewController {
 	NSDictionary *child;
@@ -33,10 +40,15 @@
 	UITableView *myTableView;
 	BOOL crypted;
 	UILabel *passVal;
+	
+	TopAlert *alertView;
 }
 
 @property (readwrite, retain) NSDictionary *child;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
+@property (nonatomic, retain)	TopAlert *alertView;
+
 
 - (NSString *) redisplayPassword:(NSString*) key;
 
