@@ -9,41 +9,41 @@
 	};
 	044BEE460EB10B5C00FDA74E /* KDBReader.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1692, 4394}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1692, 4134}}";
 			sepNavSelRange = "{6650, 8}";
-			sepNavVisRange = "{6066, 2929}";
+			sepNavVisRange = "{6066, 2088}";
 			sepNavWindowFrame = "{{44, 84}, {1035, 918}}";
 		};
 	};
 	04A0896D0EC8E6270086A9F8 /* German */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1237, 790}}";
-			sepNavSelRange = "{1696, 0}";
-			sepNavVisRange = "{0, 1696}";
+			sepNavIntBoundsRect = "{{0, 0}, {1272, 790}}";
+			sepNavSelRange = "{1056, 0}";
+			sepNavVisRange = "{0, 1927}";
 			sepNavWindowFrame = "{{7, 77}, {1035, 918}}";
 		};
 	};
 	04C278AB0EAFC08600813600 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1202, 790}}";
-			sepNavSelRange = "{1622, 0}";
-			sepNavVisRange = "{0, 1625}";
+			sepNavIntBoundsRect = "{{0, 0}, {1244, 790}}";
+			sepNavSelRange = "{964, 0}";
+			sepNavVisRange = "{0, 1851}";
 			sepNavWindowFrame = "{{15, 79}, {1035, 918}}";
 		};
 	};
 	04C279CE0EAFC2FD00813600 /* ChildViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {753, 730}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1373}";
+			sepNavIntBoundsRect = "{{0, 0}, {753, 728}}";
+			sepNavSelRange = "{1035, 11}";
+			sepNavVisRange = "{0, 1597}";
 			sepNavWindowFrame = "{{38, 55}, {1035, 723}}";
 		};
 	};
 	04C279CF0EAFC2FD00813600 /* ChildViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {999, 5083}}";
-			sepNavSelRange = "{10575, 0}";
-			sepNavVisRange = "{10164, 528}";
+			sepNavIntBoundsRect = "{{0, 0}, {753, 6136}}";
+			sepNavSelRange = "{424, 0}";
+			sepNavVisRange = "{48, 1710}";
 			sepNavWindowFrame = "{{56, 245}, {1035, 723}}";
 		};
 	};
@@ -148,9 +148,9 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Distribution;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 3D7137F00EC09E2F00BD9E03 /* iKeePass */;
-		activeSDKPreference = iphonesimulator3.1;
+		activeSDKPreference = iphoneos3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* iKeePass */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* iKeePass */,
@@ -272,14 +272,18 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 278791929;
-			PBXWorkspaceStateSaveDate = 278791929;
+			PBXPerProjectTemplateStateSaveDate = 279026649;
+			PBXWorkspaceStateSaveDate = 279026649;
 		};
 		perUserProjectItems = {
 			3D124285101B788300A17C28 /* PBXBookmark */ = 3D124285101B788300A17C28 /* PBXBookmark */;
 			3D124287101B788300A17C28 /* PBXBookmark */ = 3D124287101B788300A17C28 /* PBXBookmark */;
+			3D51423910A19D4100F5BAFB /* PBXTextBookmark */ = 3D51423910A19D4100F5BAFB /* PBXTextBookmark */;
+			3D51424610A19D4100F5BAFB /* PBXTextBookmark */ = 3D51424610A19D4100F5BAFB /* PBXTextBookmark */;
 			3D52353F107215A200990E70 /* PBXBookmark */ = 3D52353F107215A200990E70 /* PBXBookmark */;
 			3D5235B81072233400990E70 /* PBXTextBookmark */ = 3D5235B81072233400990E70 /* PBXTextBookmark */;
+			3D64183E109F70F1007E5975 /* PBXTextBookmark */ = 3D64183E109F70F1007E5975 /* PBXTextBookmark */;
+			3D641895109F75AE007E5975 /* PBXTextBookmark */ = 3D641895109F75AE007E5975 /* PBXTextBookmark */;
 			3D71381C0EC0A02300BD9E03 /* PBXTextBookmark */ = 3D71381C0EC0A02300BD9E03 /* PBXTextBookmark */;
 			3D7214121095E27F006C9CAA /* PBXBookmark */ = 3D7214121095E27F006C9CAA /* PBXBookmark */;
 			3D7214221095E2C5006C9CAA /* PBXTextBookmark */ = 3D7214221095E2C5006C9CAA /* PBXTextBookmark */;
@@ -299,12 +303,7 @@
 			3DCDF37B100CF359007DDF57 /* PBXTextBookmark */ = 3DCDF37B100CF359007DDF57 /* PBXTextBookmark */;
 			3DCDF37E100CF359007DDF57 /* PBXTextBookmark */ = 3DCDF37E100CF359007DDF57 /* PBXTextBookmark */;
 			3DCDF381100CF359007DDF57 /* PBXBookmark */ = 3DCDF381100CF359007DDF57 /* PBXBookmark */;
-			3DD003FA109E087B002826BA /* PBXBookmark */ = 3DD003FA109E087B002826BA /* PBXBookmark */;
-			3DD003FB109E08DC002826BA /* PBXTextBookmark */ = 3DD003FB109E08DC002826BA /* PBXTextBookmark */;
 			3DD0040F109E0B44002826BA /* PBXTextBookmark */ = 3DD0040F109E0B44002826BA /* PBXTextBookmark */;
-			3DD00427109E0C77002826BA /* PBXTextBookmark */ = 3DD00427109E0C77002826BA /* PBXTextBookmark */;
-			3DD00449109E0DE5002826BA /* PBXTextBookmark */ = 3DD00449109E0DE5002826BA /* PBXTextBookmark */;
-			3DD0044A109E0DE5002826BA /* PBXTextBookmark */ = 3DD0044A109E0DE5002826BA /* PBXTextBookmark */;
 			3DEA829F109DFAEA002EB432 /* PBXTextBookmark */ = 3DEA829F109DFAEA002EB432 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3D7138080EC09E5500BD9E03 /* Source Control */;
@@ -343,6 +342,26 @@
 		isa = PBXBookmark;
 		fRef = 042879720EB63848002F76CA /* templates.png */;
 	};
+	3D51423910A19D4100F5BAFB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 04C279CF0EAFC2FD00813600 /* ChildViewController.m */;
+		name = "ChildViewController.m: 15";
+		rLen = 0;
+		rLoc = 424;
+		rType = 0;
+		vrLen = 1710;
+		vrLoc = 48;
+	};
+	3D51424610A19D4100F5BAFB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 04C279CE0EAFC2FD00813600 /* ChildViewController.h */;
+		name = "ChildViewController.h: 31";
+		rLen = 11;
+		rLoc = 1035;
+		rType = 0;
+		vrLen = 1597;
+		vrLoc = 0;
+	};
 	3D52353F107215A200990E70 /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = 3DCC16AF1072109900661AC0 /* 0.png */;
@@ -361,7 +380,7 @@
 		ignoreCount = 0;
 		lineNumber = 240;
 		location = iKeePass;
-		modificationTime = 278793600.681098;
+		modificationTime = 279023094.8775489;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -374,6 +393,33 @@
 		rType = 0;
 		vrLen = 1378;
 		vrLoc = 1275;
+	};
+	3D641837109F70C3007E5975 /* CGGeometry.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = CGGeometry.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h;
+		sourceTree = "<absolute>";
+	};
+	3D64183E109F70F1007E5975 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3D641837109F70C3007E5975 /* CGGeometry.h */;
+		name = "CGGeometry.h: 275";
+		rLen = 0;
+		rLoc = 8685;
+		rType = 0;
+		vrLen = 1567;
+		vrLoc = 7498;
+	};
+	3D641895109F75AE007E5975 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 04C279CE0EAFC2FD00813600 /* ChildViewController.h */;
+		name = "ChildViewController.h: 31";
+		rLen = 11;
+		rLoc = 1035;
+		rType = 0;
+		vrLen = 1599;
+		vrLoc = 3;
 	};
 	3D7137F00EC09E2F00BD9E03 /* iKeePass */ = {
 		isa = PBXExecutable;
@@ -544,7 +590,7 @@
 		ignoreCount = 0;
 		lineNumber = 205;
 		location = iKeePass;
-		modificationTime = 278793600.680863;
+		modificationTime = 279023094.877197;
 		originalNumberOfMultipleMatches = 0;
 		state = 2;
 	};
@@ -584,20 +630,6 @@
 		isa = PBXBookmark;
 		fRef = 042879040EB63847002F76CA /* 13.png */;
 	};
-	3DD003FA109E087B002826BA /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 044BEE460EB10B5C00FDA74E /* KDBReader.mm */;
-	};
-	3DD003FB109E08DC002826BA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 04C279CE0EAFC2FD00813600 /* ChildViewController.h */;
-		name = "ChildViewController.h: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1373;
-		vrLoc = 0;
-	};
 	3DD0040F109E0B44002826BA /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28D7ACF70DDB3853001CB0EB /* iKeePassViewController.m */;
@@ -607,36 +639,6 @@
 		rType = 0;
 		vrLen = 2259;
 		vrLoc = 18159;
-	};
-	3DD00427109E0C77002826BA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 04C279CF0EAFC2FD00813600 /* ChildViewController.m */;
-		name = "ChildViewController.m: 334";
-		rLen = 0;
-		rLoc = 11985;
-		rType = 0;
-		vrLen = 2139;
-		vrLoc = 10058;
-	};
-	3DD00449109E0DE5002826BA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 04C279CF0EAFC2FD00813600 /* ChildViewController.m */;
-		name = "ChildViewController.m: 275";
-		rLen = 0;
-		rLoc = 9588;
-		rType = 0;
-		vrLen = 2332;
-		vrLoc = 9380;
-	};
-	3DD0044A109E0DE5002826BA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 044BEE460EB10B5C00FDA74E /* KDBReader.mm */;
-		name = "KDBReader.mm: 209";
-		rLen = 8;
-		rLoc = 6650;
-		rType = 0;
-		vrLen = 2929;
-		vrLoc = 6066;
 	};
 	3DEA829F109DFAEA002EB432 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
