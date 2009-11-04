@@ -29,7 +29,8 @@
 "ASK_REALLY_DELETE_DATABASE" = "Möchten sie wirklich  %@ löschen?";
 "WRONG_PASSWORD_MESSAGE" = "Das eingegebebe Passwort ist falsch";
 "MISSING_PASSWORD_MESSAGE" = "Password is missing";
-"CORRUPTED_DB_MESSAGE" = "Datenbank ist fehlerhaft!";
+//"CORRUPTED_DB_MESSAGE" = "Datenbank ist fehlerhaft!";
+"CORRUPTED_DB_MESSAGE" = "Bitte überprüfen Sie den Dateinamen und die Zugriffsrechte!";
 "COULD_NOT_LOAD_DB_MESSAGE" = "Konnte Datenbank nicht laden- URL falsch?";
 "COULD_NOT_LOAD_DB_MESSAGE2" = "Konnte Datenbank nicht laden - DB Name falsch?";
 "UNKNOWN_ERROR_MESSAGE" = "Unbekannter Fehler!";
