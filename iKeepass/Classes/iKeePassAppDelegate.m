@@ -47,6 +47,12 @@
 	
     [window makeKeyAndVisible];
 }
+/*
+ * Close the Database if interrupted by Sleep, Incoming Call etc.
+ */
+- (void)applicationWillResignActive:(UIApplication *)application {
+	[viewController close];
+}
 
 
 - (void)dealloc {
